@@ -1,32 +1,45 @@
 [versions]
+appcompat = "1.6.1"
+image-loader = "1.6.4"
 kotlin = "1.9.0"
 kotlin-serialization = "1.5.1"
 agp = "8.1.0"
-compose = "1.6.0-alpha02"
+accompanist = "0.33.0-alpha"
+horologist = "0.5.4"
+paging = "3.2.0-alpha05-0.2.3"
+tv = "1.0.0-alpha08"
+ktor = "2.3.3"
+media3 = "1.1.1"
+uuid = "0.8.0"
+moko-resources = "0.23.0"
+
+compose-multiplatform = "1.5.0-beta02"
+compose = "1.6.0-alpha03"
 compose-compiler = "1.5.1"
-compose-material3 = "1.2.0-alpha04"
+compose-material3 = "1.2.0-alpha05"
 compose-stable-marker = "1.0.0"
 compose-shimmer = "1.0.5"
-accompanist = "0.31.6-rc"
-ktor = "2.3.2"
-media3 = "1.1.0"
-koin = "3.4.6"
-kamel-image = "0.7.1"
+
+koin-core = "3.4.3"
+koin-compose = "3.4.6"
 
 [libraries]
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-core = "androidx.core:core-ktx:1.10.1"
 androidx-splashscreen = "androidx.core:core-splashscreen:1.0.1"
 androidx-activity = "androidx.activity:activity-compose:1.7.2"
-androidx-paging = "androidx.paging:paging-compose:3.2.0"
 
+image-loader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "image-loader" }
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-contentnegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-encoding = { module = "io.ktor:ktor-client-encoding", version.ref = "ktor" }
 
-koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-core" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin-compose" }
 
+compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
@@ -41,9 +54,15 @@ compose-shimmer = { module = "com.valentinilk.shimmer:compose-shimmer", version.
 
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 
-kamel-image = { module = "media.kamel:kamel-image", version.ref = "kamel-image" }
+horologist-compose-layout = { module = "dev.olshevski.horologist:horologist-compose-layout", version.ref = "horologist" }
 
-navigation = "dev.olshevski.navigation:reimagined:1.5.0-beta01"
+paging-common = { module = "app.cash.paging:paging-common", version.ref = "paging" }
+paging-runtime-composeui = { module = "app.cash.paging:paging-runtime-composeui", version.ref = "paging" }
+
+tv-foundation = { module = "androidx.tv:tv-foundation", version.ref = "tv" }
+tv-material = { module = "androidx.tv:tv-material", version.ref = "tv" }
+
+navigation = "dev.olshevski.navigation:reimagined:1.5.0"
 
 media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
 media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "media3" }
@@ -56,17 +75,28 @@ kotlinx-collections-immutable = "org.jetbrains.kotlinx:kotlinx-collections-immut
 
 brotli = "org.brotli:dec:0.1.2"
 
-compose-rules = { module = "io.nlopez.compose.rules:ktlint", version = "0.1.12" }
+uuid = { module = "com.benasher44:uuid", version.ref = "uuid" }
+
+moko-parcelize = "dev.icerock.moko:parcelize:0.9.0"
+moko-resources-compose = { module = "dev.icerock.moko:resources-compose", version.ref = "moko-resources" }
+
+settings-noarg = "com.russhwolf:multiplatform-settings-no-arg:1.0.0"
+settings-coroutines = "com.russhwolf:multiplatform-settings-coroutines:1.0.0"
+
+compose-rules = { module = "io.nlopez.compose.rules:ktlint", version = "0.2.1" }
 
 [bundles]
-androidx = ["androidx-core", "androidx-splashscreen", "androidx-activity", "androidx-paging"]
+androidx = ["androidx-appcompat", "androidx-core", "androidx-splashscreen", "androidx-activity"]
 ktor = ["ktor-core", "ktor-contentnegotiation", "ktor-serialization-json", "ktor-encoding"]
 media3 = ["media3-exoplayer", "media3-exoplayer-dash", "media3-session"]
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+compose = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
