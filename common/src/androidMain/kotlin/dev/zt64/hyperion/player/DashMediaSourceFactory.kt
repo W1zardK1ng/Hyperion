@@ -53,25 +53,34 @@ class DashMediaSourceFactory(
         val sets = groups.entries.mapIndexed { index, (_, items) ->
             val audioTrack = (items.first() as? DomainFormat.Audio)?.audioTrack
 
-            if (audioTrack != null) {
-                AdaptationSet(
-                    /* id= */ index,
-                    /* type = */ C.TRACK_TYPE_DEFAULT,
-                    /* representations = */ items.map { it.generateRepresentation(cpn) },
-                    /* accessibilityDescriptors = */ emptyList(),
-                    /* essentialProperties = */ emptyList(),
-                    /* supplementalProperties = */ emptyList(),
-                )
-            } else {
-                AdaptationSet(
-                    /* id= */ index,
-                    /* type = */ C.TRACK_TYPE_DEFAULT,
-                    /* representations = */ items.map { it.generateRepresentation(cpn) },
-                    /* accessibilityDescriptors = */ emptyList(),
-                    /* essentialProperties = */ emptyList(),
-                    /* supplementalProperties = */ emptyList(),
-                )
-            }
+            // if (audioTrack != null) {
+            //     AdaptationSet(
+            //         /* id= */ index,
+            //         /* type = */ C.TRACK_TYPE_DEFAULT,
+            //         /* representations = */ items.map { it.generateRepresentation(cpn) },
+            //         /* accessibilityDescriptors = */ emptyList(),
+            //         /* essentialProperties = */ emptyList(),
+            //         /* supplementalProperties = */ emptyList(),
+            //     )
+            // } else {
+            //     AdaptationSet(
+            //         /* id= */ index,
+            //         /* type = */ C.TRACK_TYPE_DEFAULT,
+            //         /* representations = */ items.map { it.generateRepresentation(cpn) },
+            //         /* accessibilityDescriptors = */ emptyList(),
+            //         /* essentialProperties = */ emptyList(),
+            //         /* supplementalProperties = */ emptyList(),
+            //     )
+            // }
+
+            AdaptationSet(
+                /* id= */ index.toLong(),
+                /* type = */ C.TRACK_TYPE_DEFAULT,
+                /* representations = */ items.map { it.generateRepresentation(cpn) },
+                /* accessibilityDescriptors = */ emptyList(),
+                /* essentialProperties = */ emptyList(),
+                /* supplementalProperties = */ emptyList(),
+            )
         }
 
         return factory.createMediaSource(
